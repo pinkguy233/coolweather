@@ -10,6 +10,15 @@ public class Province  extends DataSupport {
     private  String provinceName;
     private  int provinceCode;
 
+    @Override
+    public String toString() {
+        return "Province{" +
+                "id=" + id +
+                ", provinceName='" + provinceName + '\'' +
+                ", provinceCode=" + provinceCode +
+                '}';
+    }
+
     public Province() {
     }
 

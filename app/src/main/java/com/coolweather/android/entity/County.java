@@ -9,6 +9,17 @@ public class County   extends DataSupport {
         private String weatherId;
         private int cityId;
 
+
+    @Override
+    public String toString() {
+        return "County{" +
+                "id=" + id +
+                ", countyName='" + countyName + '\'' +
+                ", weatherId='" + weatherId + '\'' +
+                ", cityId=" + cityId +
+                '}';
+    }
+
     public int getId() {
         return id;
     }
