@@ -1,6 +1,7 @@
 package com.coolweather.android;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -132,7 +133,6 @@ public class AreaFragment extends Fragment {
         //条目点击事件
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -149,11 +149,15 @@ public class AreaFragment extends Fragment {
                         break;
                     case LEVEL_COUNTY:
                         selectCounty  = countyList.get(position);  //获取当前选中的县
+                        Log.d(TAG, "onItemClick: "+selectCounty);
+                        Intent intent = new Intent(getActivity(),WeatherActivity.class);
+                        intent.putExtra("weather_id",selectCounty.getWeatherId());
+                        startActivity(intent);
+                        getActivity().finish();
                         break;
                 }
             }
         });
-
         super.onActivityCreated(savedInstanceState);
     }
 
@@ -287,6 +291,7 @@ public class AreaFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            closePrgressdialog();
                             if ("province".equals(type)){
                                 queryProvinses();
                             }else  if ("city".equals(type)){
